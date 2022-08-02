@@ -10,22 +10,22 @@ public class FillForm {
 
     static void elementsForm() {
 
-        $("#firstName").setValue(DateForTest.firstname);
-        $("#lastName").setValue(DateForTest.lastname);
-        $("#userEmail").setValue(DateForTest.email);
+        $("#firstName").setValue(DataForTest.firstname);
+        $("#lastName").setValue(DataForTest.lastname);
+        $("#userEmail").setValue(DataForTest.email);
         $("[for=gender-radio-1]").click();
-        $("#userNumber").setValue(DateForTest.phone);
+        $("#userNumber").setValue(DataForTest.phone);
         $("#dateOfBirthInput").click();
         $("#dateOfBirthInput").sendKeys(Keys.CONTROL + "a");
-        $("#dateOfBirthInput").sendKeys(DateForTest.dateOfBirth);
+        $("#dateOfBirthInput").sendKeys(DataForTest.dateOfBirth);
         $("#dateOfBirthInput").sendKeys(Keys.ENTER);
         $("#subjectsInput").click();
-        $("#subjectsInput").setValue(DateForTest.subjects1).pressEnter();
+        $("#subjectsInput").setValue(DataForTest.subjects1).pressEnter();
         $("[for=hobbies-checkbox-1]").click();
         $("#uploadPicture").uploadFile(new File("src/test/resources/iam.jpg"));
-        $("#currentAddress").setValue(DateForTest.currentAddress);
-        $("#react-select-3-input").setValue(DateForTest.state).pressEnter();
-        $("#react-select-4-input").setValue(DateForTest.city).pressEnter();
+        $("#currentAddress").setValue(DataForTest.currentAddress);
+        $("#react-select-3-input").setValue(DataForTest.state).pressEnter();
+        $("#react-select-4-input").setValue(DataForTest.city).pressEnter();
         $("#submit").click();
 
     }

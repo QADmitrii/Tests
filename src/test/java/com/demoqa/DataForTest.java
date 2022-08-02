@@ -1,6 +1,6 @@
 package com.demoqa;
 
-public class DateForTest {
+public class DataForTest {
     static String firstname = "Bob";
     static String lastname = "Grey";
     static String email = "valid@mail.com";
