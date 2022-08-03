@@ -13,8 +13,6 @@ public class DataForTest {
     static String currentAddress = "Panipat,1015,2ND";
     static String state  = "NCR";
     static String city  = "Noida";
-
-
 }
 
 
