@@ -1,14 +1,14 @@
 package com.demoqa;
 
 import com.codeborne.selenide.Configuration;
-import com.demoqa.Page.PageObjectForm;
+import com.demoqa.page.StudentFormPageObject;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.sleep;
 
-public class TestForm {
-PageObjectForm pageObjectForm = new PageObjectForm();
+public class StudentFormTest {
+    StudentFormPageObject pageObjectForm = new StudentFormPageObject();
+
     @BeforeAll
     static void config() {
         Configuration.baseUrl = "https://demoqa.com";
@@ -26,28 +26,28 @@ PageObjectForm pageObjectForm = new PageObjectForm();
                 .setUserNumberInput("7916557399")
                 .setBirthDate("27", "May", "1990")
                 .setInputSubject("English")
-                .setHobbies()
-                .setUploadPic()
+                .setHobbies("Sports")
+                .uploadFile("src/test/resources/iam.jpg")
                 .setAddress("Panipat,1015,2ND")
                 .setStateInput("NCR")
-                .setCityInput("Noida");
+                .setCityInput("Noida")
+                .clickSubmit();
 
-        $("#submit").click();
 
         sleep(1000); // для визуального разделения шагов теста (для себя)
 
         pageObjectForm.visibleModalResults();
-        pageObjectForm.checkFillResults("Student Name","Bob Grey");
-        pageObjectForm.checkFillResults("Student Email","valid@mail.com");
-        pageObjectForm.checkFillResults("Gender","Male");
-        pageObjectForm.checkFillResults("Mobile","7916557399");
-        pageObjectForm.checkFillResults("Date of Birth","27 May,1990");
-        pageObjectForm.checkFillResults("Subjects","English");
-        pageObjectForm.checkFillResults("Hobbies","Sports");
-        pageObjectForm.checkFillResults("Picture","iam.jpg");
-        pageObjectForm.checkFillResults("Address","Panipat,1015,2ND");
-        pageObjectForm.checkFillResults("State and City","NCR Noida");
+        pageObjectForm.checkFillResults("Student Name", "Bob Grey");
+        pageObjectForm.checkFillResults("Student Email", "valid@mail.com");
+        pageObjectForm.checkFillResults("Gender", "Male");
+        pageObjectForm.checkFillResults("Mobile", "7916557399");
+        pageObjectForm.checkFillResults("Date of Birth", "27 May,1990");
+        pageObjectForm.checkFillResults("Subjects", "English");
+        pageObjectForm.checkFillResults("Hobbies", "Sports");
+        pageObjectForm.checkFillResults("Picture", "iam.jpg");
+        pageObjectForm.checkFillResults("Address", "Panipat,1015,2ND");
+        pageObjectForm.checkFillResults("State and City", "NCR Noida");
+        pageObjectForm.closeModal();
 
-        $("#closeLargeModal").click();
     }
 }

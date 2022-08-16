@@ -1,4 +1,4 @@
-package com.demoqa.Page.components;
+package com.demoqa.page.components;
 
 import static com.codeborne.selenide.Selenide.$;
 

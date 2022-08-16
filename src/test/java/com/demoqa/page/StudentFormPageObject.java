@@ -1,13 +1,16 @@
-package com.demoqa.Page;
+package com.demoqa.page;
 
 import com.codeborne.selenide.SelenideElement;
-import com.demoqa.Page.components.CalendarComponent;
-import com.demoqa.Page.components.CheckResults;
+import com.demoqa.page.components.CalendarComponent;
+import com.demoqa.page.components.CheckResults;
+
 import java.io.File;
+
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class PageObjectForm {
+public class StudentFormPageObject {
 
     //Elements
     private final static String TITLE_TEXT = "Student Registration Form";
@@ -21,14 +24,14 @@ public class PageObjectForm {
             clickGender = $("[for=gender-radio-1]"),
             userNumberInput = $("#userNumber"),
             inputSubject = $("#subjectsInput"),
-            hobbies =$("[for=hobbies-checkbox-1]"),
+            hobbies = $("[for=hobbies-checkbox-1]"),
             uploadPic = $("#uploadPicture"),
-            currentAddress =  $("#currentAddress"),
+            currentAddress = $("#currentAddress"),
             stateInput = $("#react-select-3-input"),
             cityInput = $("#react-select-4-input");
 
     //Actions
-    public PageObjectForm openPage() {
+    public StudentFormPageObject openPage() {
         open("/automation-practice-form");
         $(".practice-form-wrapper").shouldHave(text(TITLE_TEXT));
         executeJavaScript("$('footer').remove()");
@@ -37,84 +40,103 @@ public class PageObjectForm {
         return this;
     }
 
-    public PageObjectForm setFirstNameInput (String value) {
+    public StudentFormPageObject setFirstNameInput(String value) {
         firstNameInput.setValue(value);
 
         return this;
     }
-    public PageObjectForm setLastNameInput (String value) {
+
+    public StudentFormPageObject setLastNameInput(String value) {
         lastNameInput.setValue(value);
 
         return this;
     }
 
-    public PageObjectForm setEmailInput (String value) {
+    public StudentFormPageObject setEmailInput(String value) {
         emailInput.setValue(value);
 
         return this;
     }
 
-    public PageObjectForm clickRadioGender() {
+    public StudentFormPageObject clickRadioGender() {
         clickGender.click();
 
         return this;
     }
 
-    public PageObjectForm setUserNumberInput(String value) {
+    public StudentFormPageObject setUserNumberInput(String value) {
         userNumberInput.setValue(value);
 
         return this;
     }
-    public PageObjectForm setBirthDate(String day, String month, String year) {
+
+    public StudentFormPageObject setBirthDate(String day, String month, String year) {
         $("#dateOfBirthInput").click();
         calendarComponent.setDate(day, month, year);
 
         return this;
     }
 
-    public PageObjectForm setInputSubject(String value) {
+    public StudentFormPageObject setInputSubject(String value) {
         inputSubject.setValue(value).pressEnter();
 
         return this;
     }
 
-    public PageObjectForm setHobbies() {
-        hobbies.click();
+    public StudentFormPageObject setHobbies(String value) {
+
+        $("#hobbiesWrapper").$(byText(value)).click();
 
         return this;
     }
 
-    public PageObjectForm setUploadPic() {
-        uploadPic.uploadFile(new File("src/test/resources/iam.jpg"));
-
+    public StudentFormPageObject uploadFile(String value) {
+        $("#uploadPicture").uploadFile(new File(value));
         return this;
+
     }
 
-    public PageObjectForm setAddress (String value) {
+    public StudentFormPageObject setAddress(String value) {
         currentAddress.setValue(value);
 
         return this;
     }
-    public PageObjectForm setStateInput (String value) {
+
+    public StudentFormPageObject setStateInput(String value) {
         stateInput.setValue(value).pressEnter();
 
         return this;
     }
-    public PageObjectForm setCityInput (String value) {
+
+    public StudentFormPageObject setCityInput(String value) {
         cityInput.setValue(value).pressEnter();
 
         return this;
     }
 
-    public PageObjectForm visibleModalResults(){
+    public StudentFormPageObject clickSubmit() {
+        $("#submit").click();
+
+        return this;
+    }
+
+    public StudentFormPageObject visibleModalResults() {
         checkResults.checkVisibleModal();
 
         return this;
 
     }
-    public PageObjectForm checkFillResults(String key, String value){
+
+    public StudentFormPageObject checkFillResults(String key, String value) {
         checkResults.checkForm(key, value);
 
         return this;
+    }
+
+    public StudentFormPageObject closeModal() {
+        $("#closeLargeModal").click();
+
+        return this;
+
     }
 }
