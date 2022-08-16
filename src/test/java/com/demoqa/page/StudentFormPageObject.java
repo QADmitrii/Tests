@@ -58,8 +58,8 @@ public class StudentFormPageObject {
         return this;
     }
 
-    public StudentFormPageObject clickRadioGender() {
-        clickGender.click();
+    public StudentFormPageObject clickRadioGender(String value) {
+        $("#genterWrapper").$(byText(value)).click();
 
         return this;
     }
