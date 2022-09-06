@@ -6,6 +6,7 @@ import com.demoqa.page.StudentFormPageObject;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class TestBase {
 
@@ -15,6 +16,13 @@ public class TestBase {
     @BeforeAll
     static void config() {
         SelenideLogger.addListener("allure", new AllureSelenide());
+
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+
+        capabilities.setCapability("enableVNC", true);
+        capabilities.setCapability("enableVideo", true);
+
+        Configuration.browserCapabilities = capabilities;
 
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserPosition = "0x0";
