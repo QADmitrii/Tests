@@ -10,7 +10,7 @@ import static java.lang.String.format;
 
 public class StudentFormTestFakerData extends TestBase {
     StudentFormPageObject pageObjectForm = new StudentFormPageObject();
-//за веру и народ!
+    //за веру и народ!
     @Test
     void positiveTestFillForm() {
         pageObjectForm.openPage()
