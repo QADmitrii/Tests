@@ -13,5 +13,6 @@ public class TestBase {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserPosition = "0x0";
         Configuration.browserSize = "1920x1080";
+        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
     }
 }
