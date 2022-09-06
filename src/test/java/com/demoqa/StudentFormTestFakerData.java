@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.sleep;
 import static com.demoqa.data.DataForTest.*;
+import static io.qameta.allure.Allure.step;
 import static java.lang.String.format;
 
 public class StudentFormTestFakerData extends TestBase {
@@ -13,20 +14,22 @@ public class StudentFormTestFakerData extends TestBase {
     //за веру и народ! Работай на дженкинс, плиз
     @Test
     void positiveTestFillForm() {
-        pageObjectForm.openPage()
-                .setFirstNameInput(firstName)
-                .setLastNameInput(lastName)
-                .setEmailInput(studentEmail)
-                .clickRadioGender(gender)
-                .setUserNumberInput(phone)
-                .setBirthDate(day, month, year)
-                .setInputSubject(subjects1)
-                .setHobbies(hobbies)
-                .uploadFile(filePath + pic)
-                .setAddress(currentAddress)
-                .setStateInput(state)
-                .setCityInput(city)
-                .clickSubmit();
+        step("Открыть и заполнить форму", () -> {
+                    pageObjectForm.openPage()
+                            .setFirstNameInput(firstName)
+                            .setLastNameInput(lastName)
+                            .setEmailInput(studentEmail)
+                            .clickRadioGender(gender)
+                            .setUserNumberInput(phone)
+                            .setBirthDate(day, month, year)
+                            .setInputSubject(subjects1)
+                            .setHobbies(hobbies)
+                            .uploadFile(filePath + pic)
+                            .setAddress(currentAddress)
+                            .setStateInput(state)
+                            .setCityInput(city)
+                            .clickSubmit();
+                });
 
         String expectedFullName = format("%s %s", firstName, lastName);
         String expectedDateOfBirth = format("%s %s,%s", day, month, year);
@@ -34,19 +37,21 @@ public class StudentFormTestFakerData extends TestBase {
 
 
         sleep(1000); // для визуального разделения шагов теста (для себя)
+        step("Проверка формы после заполнения", () -> {
+            pageObjectForm.visibleModalResults();
+            pageObjectForm.checkFillResults("Student Name", expectedFullName);
+            pageObjectForm.checkFillResults("Student Email", studentEmail);
+            pageObjectForm.checkFillResults("Gender", gender);
+            pageObjectForm.checkFillResults("Mobile", phone);
+            pageObjectForm.checkFillResults("Date of Birth", "30 April,1993");
+            pageObjectForm.checkFillResults("Subjects", subjects1);
+            pageObjectForm.checkFillResults("Hobbies", hobbies);
+            pageObjectForm.checkFillResults("Picture", pic);
+            pageObjectForm.checkFillResults("Address", currentAddress);
+            pageObjectForm.checkFillResults("State and City", expectedStateAndCity);
+            pageObjectForm.closeModal();
 
-        pageObjectForm.visibleModalResults();
-        pageObjectForm.checkFillResults("Student Name", expectedFullName);
-        pageObjectForm.checkFillResults("Student Email", studentEmail);
-        pageObjectForm.checkFillResults("Gender", gender);
-        pageObjectForm.checkFillResults("Mobile", phone);
-        pageObjectForm.checkFillResults("Date of Birth", "30 April,1993");
-        pageObjectForm.checkFillResults("Subjects", subjects1);
-        pageObjectForm.checkFillResults("Hobbies", hobbies);
-        pageObjectForm.checkFillResults("Picture", pic);
-        pageObjectForm.checkFillResults("Address", currentAddress);
-        pageObjectForm.checkFillResults("State and City", expectedStateAndCity);
-        pageObjectForm.closeModal();
+        });
 
     }
 }
