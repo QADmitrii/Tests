@@ -25,7 +25,7 @@ public class TestBase {
 
         Configuration.browserCapabilities = capabilities;
         Configuration.baseUrl = "https://demoqa.com";
-        
+        Configuration.timeout = 10_000;
         Configuration.browser = System.getProperty("browser_name", "chrome");
         Configuration.browserVersion = System.getProperty("browser_version", "105.0");
         Configuration.browserSize = System.getProperty("browser_size", "1920x1080");
