@@ -11,7 +11,7 @@ public class DataForTest {
             gender = "Male",
             phone = faker.phoneNumber().subscriberNumber(10),
             day = "30",
-            month = "May",
+            month = "November",
             year = "1993",
             subjects1 = "English",
             hobbies = "Sports",

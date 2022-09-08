@@ -43,7 +43,7 @@ public class StudentFormTestFakerData extends TestBase {
             pageObjectForm.checkFillResults("Student Email", studentEmail);
             pageObjectForm.checkFillResults("Gender", gender);
             pageObjectForm.checkFillResults("Mobile", phone);
-            pageObjectForm.checkFillResults("Date of Birth", "30 April,1993");
+            pageObjectForm.checkFillResults("Date of Birth", expectedDateOfBirth);
             pageObjectForm.checkFillResults("Subjects", subjects1);
             pageObjectForm.checkFillResults("Hobbies", hobbies);
             pageObjectForm.checkFillResults("Picture", pic);
