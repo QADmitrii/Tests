@@ -11,30 +11,36 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 public class TestBase {
 
 
-    StudentFormPageObject pageObjectForm = new StudentFormPageObject();
-
     @BeforeAll
     static void config() {
         SelenideLogger.addListener("allure", new AllureSelenide());
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
 
-        capabilities.setCapability("enableVNC", true);
-        capabilities.setCapability("enableVideo", true);
+        if (System.getProperty("selenide.remote") != null) {
+            Configuration.remote = System.getProperty("selenide.remote");
+            capabilities.setCapability("enableVNC", true);
+            capabilities.setCapability("enableVideo", true);
+        }
 
         Configuration.browserCapabilities = capabilities;
-
         Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browserPosition = "0x0";
-        Configuration.browserSize = "1920x1080";
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+
+        Configuration.browser = System.getProperty("browser_name", "chrome");
+        Configuration.browserVersion = System.getProperty("browser_version", "105.0");
+        Configuration.browserSize = System.getProperty("browser_size", "1920x1080");
 
     }
+
     @AfterEach
     void addAttachments() {
-        Attach.screenshotAs("Last screen");
+        Attach.screenshotAs("Last screenshot");
         Attach.pageSource();
-        Attach.browserConsoleLogs();
-        Attach.addVideo();
+        if (Configuration.browser.equals("chrome")) {
+            Attach.browserConsoleLogs();
+        }
+        if (System.getProperty("selenide.remote") != null) {
+            Attach.addVideo();
+        }
     }
 }
