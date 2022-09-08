@@ -1,2 +1,2 @@
 "Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Tue Sep 06 09:22:17 GMT 2022","Tue Sep 06 09:22:27 GMT 2022","9821","","com.demoqa.StudentFormTestFakerData","","com.demoqa.StudentFormTestFakerData","positiveTestFillForm","positiveTestFillForm()",""
+"passed","Thu Sep 08 14:08:14 GMT 2022","Thu Sep 08 14:08:26 GMT 2022","11863","","com.demoqa.StudentFormTestFakerData","","com.demoqa.StudentFormTestFakerData","positiveTestFillForm","positiveTestFillForm()",""
