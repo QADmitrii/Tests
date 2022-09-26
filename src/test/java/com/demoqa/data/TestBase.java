@@ -32,15 +32,15 @@ public class TestBase {
 
     }
 
-    @AfterEach
-    void addAttachments() {
-        Attach.screenshotAs("Last screenshot");
-        Attach.pageSource();
-        if (Configuration.browser.equals("chrome")) {
-            Attach.browserConsoleLogs();
-        }
-        if (System.getProperty("selenide.remote") != null) {
-            Attach.addVideo();
-        }
-    }
+//    @AfterEach
+//    void addAttachments() {
+//        Attach.screenshotAs("Last screenshot");
+//        Attach.pageSource();
+//        if (Configuration.browser.equals("chrome")) {
+//            Attach.browserConsoleLogs();
+//        }
+//        if (System.getProperty("selenide.remote") != null) {
+//            Attach.addVideo();
+//        }
+//    }
 }

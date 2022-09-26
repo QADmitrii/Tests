@@ -1,0 +1,16 @@
+{
+  "base": {
+    "project": "Telegram notification HW14_Butov",
+    "environment": "qa.guru",
+    "comment": "test",
+    "reportLink": "https://jenkins.autotests.cloud/job/C14-d_butov-qa.guru-homework14-notifications/allure",
+    "language": "en",
+    "allureFolder": "build/allure-report/",
+    "enableChart": true
+  },
+  "telegram": {
+    "token": "5591360781:AAHDoBBtpWwAE-Lnmel4Q6_OuX-Qkr5Azjw",
+    "chat": "766340720",
+    "replyTo": ""
+  }
+}
